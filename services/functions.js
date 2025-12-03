@@ -48,6 +48,7 @@ export function searchingById(id) {
     for (let report of dataArray)
         if (report.id == id) {
             fund = true
+            console.log("Report found:")
             console.log(report)
         }
     if (!fund)
@@ -59,9 +60,11 @@ export function deletingById(id) {
     for (let report of dataArray)
         if (report.id == id)
             fund = true
-    // dataArray = dataArray.filter((report) => !(report.id == id))
-    dataArray.splice(dataArray.findIndex(report => report.id == id), 1)
-    if (!fund)
+    if (fund) {
+        dataArray.splice(dataArray.findIndex(report => report.id == id), 1)
+        console.log("Report deleted")
+    }
+    else
         throw new Error("Report with the given ID not found")
 }
 
@@ -76,7 +79,9 @@ export function editingReport(id, newData) {
                 report[key] = newData[key]
             }
         }
-    if (!fund)
+    if (fund)
+        console.log("Report edited successfully!")
+    else
         throw new Error("Report with the given ID not found")
 }
 

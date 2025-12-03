@@ -36,7 +36,6 @@ while (!exit) {
         case "4":
             let deleteId = readlineSync.question("Enter the report ID to delete: ")
             deletingById(deleteId)
-            console.log("Report deleted successfully!")
             break
         case "5":
             let editId = readlineSync.question("Enter the report ID to edit: ")
@@ -44,7 +43,6 @@ while (!exit) {
             let newWeapons = readlineSync.question("Enter the new weapons used (comma separated): ").split(",").map(weapon => weapon.trim())
             let newText = readlineSync.question("Enter the new report text: ")
             editingReport(editId, { terroristeName: newTerroristeName, weapons: newWeapons, text: newText })
-            console.log("Report edited successfully!")
             break
         case "0":
             exit = true

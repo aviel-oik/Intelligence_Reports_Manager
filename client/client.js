@@ -4,7 +4,7 @@ import { createReport, savingReport, gettingAllReports, gettingAllReportsByField
 console.log("\nWelcome to Intelligence Reports Manager")
 let exit = false
 while (!exit) {
-    console.log("Please choose an option:")
+    console.log("\n      === MENU ===")
     console.log("1. Add a new intelligence report")
     console.log("2. Show all reports")
     console.log("3. Search report by ID")
@@ -18,7 +18,11 @@ while (!exit) {
             let weapons = readlineSync.question("Enter the weapons used (comma separated): ").split(",").map(weapon => weapon.trim())
             let text = readlineSync.question("Enter the report text: ")
             let id = readlineSync.question("Enter the report ID: ")
-            let report = createReport(id, weapons, text, terroristeName)
+            let report
+            if (terroristeName === "" || terroristeName === null || terroristeName === undefined)
+                report = createReport(id, weapons, text)
+            else
+                report = createReport(id, weapons, text, terroristeName)
             savingReport(report)
             console.log("Report saved successfully!")
             break
